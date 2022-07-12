@@ -15,12 +15,12 @@ class App extends Component  {
     this.setState({ filter: value });
   };
   
-  // получает данные из формы и обновляет state.contacts
+  // получает данные из формы и обновляет state.contacts, если такого контакта ещё нет в списке
   getDataFromContactForm = (data) =>{
-    this.setState((prevState)=>{return {contacts:[...prevState.contacts, data]}})
+    this.state.contacts.some(contact =>contact.name === data.name) ? alert(`${data.name} is already in contacts list.`): this.setState((prevState)=>{return {contacts:[...prevState.contacts, data]}})
   }
   
-  // получает отфильтрованные элементы
+  // получает отфильтрованные контакты
   getVisibleContacts = ()=>{
     const {filter, contacts} = this.state;
     // приводит значение filter к нижнему регистру
@@ -28,9 +28,9 @@ class App extends Component  {
     
     // фильтрует контакты в зависимости от введённых данных в форме поиска
     return contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter));
-
   }
-  
+
+
   render() {
     const visibleContacts = this.getVisibleContacts();
 
@@ -51,7 +51,7 @@ class App extends Component  {
       <h1>Phonebook</h1>
       
       <ContactForm
-        submitForm={this.getDataFromContactForm}>
+        submitForm = {this.getDataFromContactForm}>
       </ContactForm>
       
       <h2>Contacts</h2>
