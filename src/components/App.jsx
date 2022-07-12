@@ -1,8 +1,7 @@
 import React, {Component} from "react";
 import ContactForm from "./ContactForm";
 import ContactList from "./ContactList";
-
-
+import FilterByName from "./FilterByName";
 
 class App extends Component  {
   state = {
@@ -21,13 +20,19 @@ class App extends Component  {
     this.setState((prevState)=>{return {contacts:[...prevState.contacts, data]}})
   }
   
-  render() {
-
+  // получает отфильтрованные элементы
+  getVisibleContacts = ()=>{
+    const {filter, contacts} = this.state;
     // приводит значение filter к нижнему регистру
-    // const normalizedFilter = this.state.filter.toLowerCase();
+    const normalizedFilter = filter.toLowerCase();
     
     // фильтрует контакты в зависимости от введённых данных в форме поиска
-    // const visibleContacts = this.state.contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter));
+    return contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter));
+
+  }
+  
+  render() {
+    const visibleContacts = this.getVisibleContacts();
 
   return (
     <div
@@ -49,16 +54,17 @@ class App extends Component  {
         submitForm={this.getDataFromContactForm}>
       </ContactForm>
       
+      <h2>Contacts</h2>
 
-      <label>Find contact by Name
-        <input type="text" value={this.state.filter} onChange={this.handleFilter} />
-      </label>
+      <FilterByName
+      value={this.state.filter}
+      onChange={this.handleFilter}
+      >
+      </FilterByName>
 
       <ContactList
-      array={this.state.contacts}>       
+        array={visibleContacts}>       
       </ContactList>
-
-
     </div>
   )
   }

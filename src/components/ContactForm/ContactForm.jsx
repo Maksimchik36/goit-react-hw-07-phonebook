@@ -23,6 +23,7 @@ class ContactForm extends Component {
     this.reset();
   }
   
+  // очищение инпутов формы
   reset = () => {
     this.setState({ name: '', number: ''})
   };
