@@ -28,7 +28,7 @@ class ContactForm extends Component {
   };
 
     render(){
-        return(<form onSubmit={this.handleSubmit} style={{display:"flex", flexDirection:"column"}}>
+        return(<form onSubmit={this.handleSubmit} style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
         <label>Name
                   <input 
                     type="text"

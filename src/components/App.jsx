@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-
 import ContactForm from "./ContactForm";
+import ContactList from "./ContactList";
 
 
 
@@ -44,21 +44,19 @@ class App extends Component  {
     >
       {/* React homework template */}
       <h1>Phonebook</h1>
+      
       <ContactForm
-      submitForm={this.getDataFromContactForm}></ContactForm>
+        submitForm={this.getDataFromContactForm}>
+      </ContactForm>
       
 
       <label>Find contact by Name
         <input type="text" value={this.state.filter} onChange={this.handleFilter} />
       </label>
 
-      <ul>
-        {/* {this.state.filter === ""} ?
-        {this.state.contacts.map(contact => { return <li key={contact.id}>{contact.name}: {contact.number}</li> })}
-        : */}
-        {/* {visibleContacts.map(contact => { return <li key={contact.id}>{contact.name}: {contact.number}</li> })} */}
-        {this.state.contacts.map(contact=>{return <li key={contact.id}>{contact.name}: {contact.number}</li>})}
-      </ul>
+      <ContactList
+      array={this.state.contacts}>       
+      </ContactList>
 
 
     </div>
