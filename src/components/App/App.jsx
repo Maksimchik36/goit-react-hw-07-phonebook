@@ -1,7 +1,8 @@
 import React, {Component} from "react";
-import ContactForm from "./ContactForm";
-import ContactList from "./ContactList";
-import FilterByName from "./FilterByName";
+import ContactForm from "../ContactForm";
+import ContactList from "../ContactList";
+import FilterByName from "../FilterByName";
+import {Container, TitleMain, TitleSecondary} from './App.styled';
 
 class App extends Component  {
   state = {
@@ -30,42 +31,37 @@ class App extends Component  {
     return contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter));
   }
 
+  // удаляет контакт из списка, сравнивая id контакта и id
+  deleteContactFromList = (event) =>{
+    const {contacts} = this.state;
+    this.setState({contacts: contacts.filter(contact => contact.id !== event.target.id)})
+  }
+
 
   render() {
     const visibleContacts = this.getVisibleContacts();
 
   return (
-    <div
-      style={{
-        height: '100vh',
-        margin:0,
-        padding: 20,
-        // display: 'flex',
-        // justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      {/* React homework template */}
-      <h1>Phonebook</h1>
+    <Container>
+       <TitleMain>Phonebook</TitleMain>
       
       <ContactForm
         submitForm = {this.getDataFromContactForm}>
       </ContactForm>
       
-      <h2>Contacts</h2>
+      <TitleSecondary>Contacts</TitleSecondary>
 
       <FilterByName
-      value={this.state.filter}
-      onChange={this.handleFilter}
-      >
+        value={this.state.filter}
+        onChange={this.handleFilter}>
       </FilterByName>
 
       <ContactList
-        array={visibleContacts}>       
+        array={visibleContacts}
+        onClick={this.deleteContactFromList}
+        >       
       </ContactList>
-    </div>
+    </Container>
   )
   }
 };
