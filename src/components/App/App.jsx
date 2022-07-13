@@ -18,7 +18,12 @@ class App extends Component  {
   
   // получает данные из формы и обновляет state.contacts, если такого контакта ещё нет в списке
   getDataFromContactForm = (data) =>{
-    this.state.contacts.some(contact =>contact.name === data.name) ? alert(`${data.name} is already in contacts list.`): this.setState((prevState)=>{return {contacts:[...prevState.contacts, data]}})
+    // проверяет есть ли добавляемый контакт в списке
+    const contactIsInList = this.state.contacts.some(contact =>contact.name === data.name);
+    // вносит новые данные в state
+    const changeState = () => this.setState((prevState)=>{return {contacts:[...prevState.contacts, data]}});
+    const errorAdd  = () => alert(`${data.name} is already in contacts list.`);
+    contactIsInList !== true ? changeState() : errorAdd();
   }
   
   // получает отфильтрованные контакты

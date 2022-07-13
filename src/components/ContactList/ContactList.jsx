@@ -4,7 +4,9 @@ import {List, Item, Button} from './ContactList.styled'
 
 const ContactList = ({array, onClick}) =>{
     return(<List>        
-        {array.map(contact=>{return <Item key={contact.id}>{contact.name}: {contact.number} <Button onClick={onClick} id={contact.id}>Delete</Button></Item>})}
+        {array.map(contact=>{return <Item key={contact.id}>{contact.name}: {contact.number}
+                                      <Button onClick={onClick} id={contact.id}>Delete</Button>
+                                    </Item>})}
       </List>)
 }
 
