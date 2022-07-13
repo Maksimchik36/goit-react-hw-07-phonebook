@@ -4,7 +4,7 @@ export const Form = styled.form`
 padding: 20px;
 display: flex; 
 flex-direction: column; 
-align-items: center; }}`
+align-items: center;`
 
 export const Label = styled.label`
 margin-bottom: 20px;
@@ -18,10 +18,10 @@ margin-left: 10px;
 export const Button = styled.button`
 padding: 5px;
 border-radius: 4px;
-border-color:#ba94ba;
+border-color: #ba94ba;
 font-weight: 600;
 cursor: pointer;
-&:hover{
-background-color:#FFB5CF;
+&:hover {
+background-color: #FFB5CF;
 }
 `

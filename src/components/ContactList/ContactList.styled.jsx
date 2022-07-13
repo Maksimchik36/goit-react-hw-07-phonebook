@@ -16,10 +16,10 @@ export const Button = styled.button`
 margin-left: 10px;
 padding: 5px;
 border-radius: 4px;
-border-color:#ba94ba;
+border-color: #ba94ba;
 font-weight: 600;
 cursor: pointer;
-&:hover{
-background-color:#FFB5CF;
+&:hover {
+background-color: #FFB5CF;
 `;
 
