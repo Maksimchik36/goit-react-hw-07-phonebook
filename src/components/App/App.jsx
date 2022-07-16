@@ -48,7 +48,7 @@ class App extends Component  {
 
   return (
     <Container>
-       <TitleMain>Phonebook</TitleMain>
+       <TitleMain>My Phonebook</TitleMain>
       
       <ContactForm
         submitForm = {this.getDataFromContactForm}>
