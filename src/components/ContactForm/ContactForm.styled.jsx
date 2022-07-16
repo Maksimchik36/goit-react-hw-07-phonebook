@@ -18,10 +18,10 @@ margin-left: 10px;
 export const Button = styled.button`
 padding: 5px;
 border-radius: 4px;
-border-color: #ba94ba;
+border-color: #747274;
 font-weight: 600;
 cursor: pointer;
 &:hover {
-background-color: #FFB5CF;
+background-color: #87ff37b3;
 }
 `

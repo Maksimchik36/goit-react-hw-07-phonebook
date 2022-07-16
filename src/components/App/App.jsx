@@ -10,6 +10,27 @@ class App extends Component  {
     filter: '',
   };
     
+  // получает из localStorage данные о содержимом массива и записывает их в state.contacts
+  componentDidMount() {
+    const data = localStorage.getItem('contacts')
+    const parsedData = JSON.parse(data);
+    // обязательная проверка - существуют ли данные (не равно ли null)
+    if (parsedData) {
+          this.setState({contacts: parsedData});
+        }
+
+    
+  }
+
+  // если данные обновляются, то при каждом рендере перезаписывает их в state.contacts
+  componentDidUpdate(prevProps, prevState) {
+    const { contacts } = this.state;
+    // проверка -  есть ли изменения, и только при положительном ответе производятся какие-либо действия
+    if (prevState.contacts.length !== !contacts.length) {
+      localStorage.setItem('contacts', JSON.stringify(contacts))
+    }
+  }
+
   // записывает вводимые данные в state.filter
   handleFilter = (event) => {
     const { value } = event.currentTarget;
@@ -48,7 +69,7 @@ class App extends Component  {
 
   return (
     <Container>
-       <TitleMain>My Phonebook</TitleMain>
+       <TitleMain>Phonebook</TitleMain>
       
       <ContactForm
         submitForm = {this.getDataFromContactForm}>
