@@ -8,6 +8,16 @@ const App = () => {
   
   const [contacts, setContacts] = useState(JSON.parse(window.localStorage.getItem('contacts')) ?? []);
   const [filtered, setFiltered] = useState('');
+
+  
+// Redux-состояние
+// {
+//   contacts: {
+//     items: [],
+//     filter: ''
+//   }
+// }
+
     
     
     // если contacts изменяется, то при каждом рендере перезаписывает их в localStorage
