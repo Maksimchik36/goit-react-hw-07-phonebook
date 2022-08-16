@@ -16,11 +16,11 @@ const App = () => {
   }, [contacts])
 
 
-  // записывает вводимые данные в filtered
-  const handleFilter = (event) => {
-    const { value } = event.currentTarget;
-    setFiltered(value);
-  };
+  // // записывает вводимые данные в filtered
+  // const handleFilter = (event) => {
+  //   // const { value } = event.currentTarget;
+  //   // setFiltered(value);
+  // };
   
   // получает данные из формы и обновляет contacts, если такого контакта ещё нет в списке
   const getDataFromContactForm = (data) => {
@@ -59,10 +59,7 @@ const App = () => {
       
       <TitleSecondary>Contacts</TitleSecondary>
 
-      <FilterByName
-        value={filtered}
-        onChange={handleFilter}>
-      </FilterByName>
+      <FilterByName></FilterByName>
 
       <ContactList
         array={visibleContacts}
