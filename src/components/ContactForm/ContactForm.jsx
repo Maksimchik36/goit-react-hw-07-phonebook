@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import { nanoid } from 'nanoid';
+import { addContact } from "redux/contacts";
+import { useDispatch } from "react-redux";
 import { Form, Label, Input, Button} from './ContactForm.styled'
 
 const ContactForm = ({ submitForm }) => {
    
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  
+  const dispatch = useDispatch();
+
 
 
   // изменяет значение name на введённое в инпуте
@@ -28,7 +33,8 @@ const ContactForm = ({ submitForm }) => {
     const {name, number} = event.currentTarget;
     const id = nanoid();
     const newContact = { id: id, name: name.value, number: number.value };
-    submitForm(newContact);
+    // submitForm(newContact);
+    dispatch(addContact(newContact))
     reset();
   }
   
