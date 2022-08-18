@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { setFilter } from 'redux/filter';
 import { Container, Label, Input } from './FilterByName.styled';
 
@@ -7,8 +7,8 @@ const FilterByName = () => {
   const dispatch = useDispatch();
 
   // читает данные из state.filter(store) и подписывается на их обновление
-  const value = useSelector(state => state.filter.value)
-  console.log("value", value);
+  // const value = useSelector(state => state.filter.value)
+  // console.log("value", value)
 
 
    // записывает в filter(store) вводимые в input(FilterByName) данные 
