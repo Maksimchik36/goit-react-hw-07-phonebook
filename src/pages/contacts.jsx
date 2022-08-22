@@ -1,5 +1,5 @@
 import { useFetchContactsQuery, useDeleteContactMutation } from "redux/contactSlice";
-import ContactList from "components/ContactList";
+import ContactList from "pages/ContactList";
 import Loader from "components/Loader";
 
 

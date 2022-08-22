@@ -1,23 +1,39 @@
-// import { useFetchContactsQuery } from "redux/contactSlice";
-import {List, Item, Button} from './ContactList.styled';
+import { useFetchContactsQuery, useDeleteContactMutation } from "redux/contactSlice";
+import { List, Item, Button } from './ContactList.styled';
 
 
-const ContactList = ({ contacts, onDelete, deleting }) => {
-  // console.log('contacts', contacts);
-  // const {data} = useFetchContactsQuery().then(response => response.json()).then(data => console.log(data));
-  // console.log("data", data);
-  // console.log("useFetchContactsQuery", useFetchContactsQuery());
+// const ContactList = ({ contacts, onDelete, deleting }) => {
+//   // console.log('contacts', contacts);
+//   // const {data} = useFetchContactsQuery().then(response => response.json()).then(data => console.log(data));
+//   // console.log("data", data);
+//   // console.log("useFetchContactsQuery", useFetchContactsQuery());
   
  
-    return(<List>        
-        {contacts.map(contact=>{return <Item key={contact.id}>{contact.name}: {contact.number}
-                                      <Button onClick={() => onDelete(contact.id)} >{deleting ? 'Deleting...' : 'Delete'}</Button>
+//     return(<List>        
+//         {contacts.map(contact=>{return <Item key={contact.id}>{contact.name}: {contact.phone}
+//                                       <Button onClick={() => onDelete(contact.id)} >{deleting ? 'Deleting...' : 'Delete'}</Button>
+//                                     </Item>})}
+//       </List>)
+// }
+
+ const ContactsPage = () => {
+    const { data, isFetching } = useFetchContactsQuery();
+    const [deleteContact, {isLoading: isDeleting}] = useDeleteContactMutation();
+
+
+    return <div>
+        {/* {data && <ContactList contacts={data} onDelete={deleteContact} deleting={isDeleting} />}</div> */}
+        {data && <List>{data.map(contact=>{return <Item key={contact.id}>{contact.name}: {contact.phone}
+                                      <Button onClick={() => deleteContact(contact.id)} >{isDeleting ? 'Deleting...' : 'Delete'}</Button>
                                     </Item>})}
-      </List>)
+      </List>}</div>
+
 }
 
+export default ContactsPage;
 
-export default ContactList;
+
+// export default ContactList;
 
 
 
