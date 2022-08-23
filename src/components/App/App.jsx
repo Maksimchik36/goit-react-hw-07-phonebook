@@ -9,11 +9,8 @@ import Loader from "components/Loader";
 // import {Container, TitleMain, TitleSecondary} from './App.styled';
 import { Container } from './App.styled';
 
-const ContactForm = lazy(() => import('../../pages/ContactForm'));
-const ContactList = lazy(() => import('../../pages/ContactList'));
-const ContactsPage = lazy(() => import('../../pages/ContactList'));
-
-const FilterByName = lazy(() => import('../../pages/FilterByName'));
+const CreateContactPage = lazy(() => import('../../pages/CreateContactPage'));
+const ContactsPage = lazy(() => import('../../pages/ContactsPage'));
 
 
 const App = () => {
@@ -37,10 +34,9 @@ const App = () => {
 
       <Suspense fallback={<Loader />}>
       <Routes>        
-          <Route path="/" element={<ContactForm />} />
+          <Route path="/" element={<CreateContactPage />} />
           <Route path ="/phonebook" element={<ContactsPage />} />
-          <Route path="/phonebook/:filter" element={<FilterByName />} />
-          <Route path ="*" element={<ContactForm />} />
+          <Route path ="*" element={<CreateContactPage />} />
       </Routes>
     </Suspense>
 

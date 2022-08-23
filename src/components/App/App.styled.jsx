@@ -7,12 +7,6 @@ margin: 0;
 background-image: linear-gradient(to right, #fc5c7d, #6a82fb);
 `;
 
-export const TitleMain = styled.h1`
-margin: 10px;
-font-size: 40px;
-text-align: center;
-`
-
 export const TitleSecondary = styled.h2`
 margin: 10px;
 font-size: 30px;
