@@ -1,13 +1,12 @@
-import { List, Item, Button } from './ContactList.styled';
+import { List } from './ContactList.styled';
+import ContactItem from 'components/ContactItem';
 
-const ContactList = ({ contacts, onDelete, deleting }) => {
+const ContactList = ({ contacts }) => {
 
   
   return (
     <List>        
-        {contacts.map(contact=>{return <Item key={contact.id}>{contact.name}: {contact.phone}
-                                      <Button onClick={() => onDelete(contact.id)} >{deleting ? 'Deleting...' : 'Delete'}</Button>
-                                    </Item>})}
+        {contacts.map(contact=> (<ContactItem key={contact.id} {...contact}></ContactItem>))}
     </List>
   )
 }
