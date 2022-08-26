@@ -24,4 +24,4 @@ cursor: pointer;
 &:hover {
 background-color: #87ff37b3;
 }
-`
+`;

@@ -21,4 +21,4 @@ text-decoration: none;
   &.active {
     color: #83faec;
   }
-`
+`;

@@ -9,7 +9,7 @@ const ContactItem = ({id, name, phone}) => {
   
   return (
       <Item>{name}: {phone}
-      <Button onClick={() => deleteContact(id)} >{isDeleting ? 'Deleting...' : 'Delete'}</Button>
+      <Button onClick={() => deleteContact(id)} disabled={ isDeleting } >{isDeleting ? 'Deleting...' : 'Delete'}</Button>
       </Item>
   )
 }

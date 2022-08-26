@@ -11,5 +11,4 @@ font-weight: 700;
 
 export const Input = styled.input`
 margin-left: 10px;
-
 `;
