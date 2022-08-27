@@ -7,13 +7,13 @@ import FilterByName from "components/FilterByName";
 
 const ContactsPage = () => {
     // ф-я возвращает данные и статусы выполнения
-    const { data = [], isFetching, isSuccess } = useFetchContactsQuery();
+    const { data, isFetching, isSuccess } = useFetchContactsQuery();
 
     // читает данные из state.filter(store) и подписывается на их обновление
     const inputData = useSelector(state => state.filter.value)
    
-    // выдает отфильтрованные контакты
-    const filteredContacts = data.filter(obj => obj.name.toLowerCase().includes(inputData));
+    // выдает отфильтрованные контакты (если есть data - обрабатывает, а если нет - [])
+    const filteredContacts = data?.filter(obj => obj.name.toLowerCase().includes(inputData)) ?? [];
 
     
    return <ContactsPageSt>
